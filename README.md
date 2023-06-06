@@ -8,6 +8,8 @@ A company sells products to several customers. It is necessary to know the perso
 
 The following conceptual model has been proposed to solve the problem:
 
+![Database Schema](https://github.com/juanjdev/data-persistence-oracle/blob/main/db%20schema.png)
+
 Given this information, you must develop the following tasks:
 
 1. Create the database schema in the engine of your choice (Oracle, MySQL).
@@ -17,3 +19,5 @@ Given this information, you must develop the following tasks:
 5. CrEate a method that allows consulting the products provided by a supplier. 
 6. A method that, based on the seller's id, shows the total value of his sales.
 7. Create a method that when entering an invoice identifier displays the following format on the console:
+
+![Invoice format](https://github.com/juanjdev/data-persistence-oracle/blob/main/invoice%20format.png)
