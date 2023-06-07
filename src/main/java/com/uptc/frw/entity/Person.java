@@ -1,9 +1,6 @@
 package com.uptc.frw.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
@@ -13,6 +10,8 @@ import java.util.List;
 public class Person {
     @Id
     @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
+    @SequenceGenerator(name = "seq_person", sequenceName = "person_seq", allocationSize = 1)
     private Long id;
     @Column(name = "NAMES")
     private String names;
@@ -27,6 +26,14 @@ public class Person {
 
     public Person(){
 
+    }
+
+    public Person(String names, String lastNames, Date birthDate, String identificationType, String identificationNumber) {
+        this.names = names;
+        this.lastNames = lastNames;
+        this.birthDate = birthDate;
+        this.identificationType = identificationType;
+        this.identificationNumber = identificationNumber;
     }
 
     public Person(Long id, String names, String lastNames, Date birthDate, String identificationType, String identificationNumber) {
@@ -84,5 +91,17 @@ public class Person {
 
     public void setIdentificationNumber(String identificationNumber) {
         this.identificationNumber = identificationNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", names='" + names + '\'' +
+                ", lastNames='" + lastNames + '\'' +
+                ", birthDate=" + birthDate +
+                ", identificationType='" + identificationType + '\'' +
+                ", identificationNumber='" + identificationNumber + '\'' +
+                '}';
     }
 }
