@@ -6,7 +6,9 @@
   <persistence-unit name="provider-unit">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>com.uptc.frw.entity.Person</class>
+    <class>com.uptc.frw.entity.Invoice</class>
     <class>com.uptc.frw.entity.Product</class>
+    <class>com.uptc.frw.entity.Detail</class>
     <properties>
       <property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>

@@ -10,10 +10,12 @@ public class Principal {
 
     public static void main(String[] args) {
         EntityManager em = PersistenceUtil.getEntityManager();
-        Person person = new Person("Juan Jose", "Blanco Mendoza", new Date(), "CC", "1193065403");
         em.getTransaction().begin();
-        em.persist(person);
-        System.out.println(person);
+        Person cliente = em.find(Person.class, 1l);
+        Person seller = em.find(Person.class, 2l);
+        Invoice invoice = new Invoice(new Date(), cliente, seller);
+        em.persist(invoice);
+        System.out.println(invoice);
         em.getTransaction().commit();
         em.close();
     }

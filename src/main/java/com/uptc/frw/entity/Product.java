@@ -2,6 +2,8 @@ package com.uptc.frw.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "PRODUCTS")
 public class Product {
@@ -15,6 +17,11 @@ public class Product {
     private String name;
     @Column(name = "UNIT_PRICE")
     private Double unitPrice;
+    @ManyToMany
+    @JoinTable(name = "PRODUCT_PROVIDER", joinColumns = @JoinColumn(name = "ID_PRODUCT"), inverseJoinColumns = @JoinColumn(name = "ID_PROVIDER"))
+    private List<Person> providers;
+    @OneToMany(mappedBy = "product")
+    private List<Detail> detailsList;
 
     public Product() {
     }
@@ -52,6 +59,22 @@ public class Product {
 
     public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public List<Person> getProviders() {
+        return providers;
+    }
+
+    public void setProviders(List<Person> providers) {
+        this.providers = providers;
+    }
+
+    public List<Detail> getDetailsList() {
+        return detailsList;
+    }
+
+    public void setDetailsList(List<Detail> detailsList) {
+        this.detailsList = detailsList;
     }
 
     @Override

@@ -24,6 +24,14 @@ public class Person {
     @Column(name = "DOC_NUMBER")
     private String identificationNumber;
 
+    @OneToMany(mappedBy = "client")
+    private List<Invoice> clientInvoiceList;
+    @OneToMany(mappedBy = "seller")
+    private List<Invoice> sellerInvoiceList;
+
+    @ManyToMany(mappedBy = "providers")
+    private List<Product> products;
+
     public Person(){
 
     }
@@ -43,6 +51,18 @@ public class Person {
         this.birthDate = birthDate;
         this.identificationType = identificationType;
         this.identificationNumber = identificationNumber;
+    }
+
+    public Person(Long id, String names, String lastNames, Date birthDate, String identificationType, String identificationNumber, List<Invoice> clientInvoiceList, List<Invoice> sellerInvoiceList, List<Product> products) {
+        this.id = id;
+        this.names = names;
+        this.lastNames = lastNames;
+        this.birthDate = birthDate;
+        this.identificationType = identificationType;
+        this.identificationNumber = identificationNumber;
+        this.clientInvoiceList = clientInvoiceList;
+        this.sellerInvoiceList = sellerInvoiceList;
+        this.products = products;
     }
 
     public Long getId() {
@@ -92,6 +112,31 @@ public class Person {
     public void setIdentificationNumber(String identificationNumber) {
         this.identificationNumber = identificationNumber;
     }
+
+    public List<Invoice> getClientInvoiceList() {
+        return clientInvoiceList;
+    }
+
+    public void setClientInvoiceList(List<Invoice> clientInvoiceList) {
+        this.clientInvoiceList = clientInvoiceList;
+    }
+
+    public List<Invoice> getSellerInvoiceList() {
+        return sellerInvoiceList;
+    }
+
+    public void setSellerInvoiceList(List<Invoice> sellerInvoiceList) {
+        this.sellerInvoiceList = sellerInvoiceList;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
 
     @Override
     public String toString() {
