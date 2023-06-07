@@ -11,9 +11,9 @@ public class Principal {
     public static void main(String[] args) {
         EntityManager em = PersistenceUtil.getEntityManager();
         em.getTransaction().begin();
-        Person cliente = em.find(Person.class, 1l);
+        Person client = em.find(Person.class, 1l);
         Person seller = em.find(Person.class, 2l);
-        Invoice invoice = new Invoice(new Date(), cliente, seller);
+        Invoice invoice = new Invoice(new Date(), client, seller);
         em.persist(invoice);
         System.out.println(invoice);
         em.getTransaction().commit();

@@ -32,7 +32,7 @@ public class Invoice {
     public Invoice() {
     }
 
-    public Invoice(Date invoiceDate, Person client, Person seller) {
+    public Invoice(Date invoiceDate, com.uptc.frw.entity.Person client, com.uptc.frw.entity.Person seller) {
         this.invoiceDate = invoiceDate;
         this.client = client;
         this.seller = seller;
