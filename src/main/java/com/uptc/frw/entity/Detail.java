@@ -30,12 +30,11 @@ public class Detail {
 
     }
 
-    public Detail(Long id, Integer amount, Double sellingPrice, Long idProduct, Long idInvoice) {
-        this.id = id;
+    public Detail(Integer amount, Double sellingPrice, Product product, Invoice invoice) {
         this.amount = amount;
         this.sellingPrice = sellingPrice;
-        this.idProduct = idProduct;
-        this.idInvoice = idInvoice;
+        this.product = product;
+        this.invoice = invoice;
     }
 
     public Long getId() {

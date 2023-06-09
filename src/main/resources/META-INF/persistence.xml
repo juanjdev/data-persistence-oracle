@@ -15,7 +15,7 @@
       <property name="jakarta.persistence.jdbc.user" value="providers"/>
       <property name="jakarta.persistence.jdbc.password" value="A"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
-      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.show_sql" value="false"/>
       <property name="hibernate.use_sql_comments" value="true"/>
     </properties>
   </persistence-unit>
