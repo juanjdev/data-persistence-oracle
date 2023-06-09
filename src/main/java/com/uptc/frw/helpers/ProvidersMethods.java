@@ -32,12 +32,9 @@ public class ProvidersMethods {
             em.persist(detail);
         }
         em.getTransaction().commit();
-        em.close();
     }
 
     public List<Invoice> getInvoicesById(Long clientId, EntityManager em){
-        em.getTransaction().begin();
-        try {
             Person client = em.find(Person.class, clientId);
             if(client != null) {
                 return client.getClientInvoiceList();
@@ -45,14 +42,9 @@ public class ProvidersMethods {
                 System.out.println("Cliente no encontrado");
                 return null;
             }
-        } finally {
-            em.close();
-        }
     }
 
     public List<Product> getProductsByProvider(Long providerId, EntityManager em){
-        em.getTransaction().begin();
-        try {
             Person provider = em.find(Person.class, providerId);
             if(provider != null) {
                 return provider.getProducts();
@@ -60,14 +52,10 @@ public class ProvidersMethods {
                 System.out.println("Proveedor no encontrado");
                 return null;
             }
-        } finally {
-            em.close();
-        }
+
     }
 
     public double getTotalSalesBySeller(Long idSeller, EntityManager em){
-        em.getTransaction().begin();
-        try{
             Person seller = em.find(Person.class, idSeller);
             double totalSales = 0.0;
 
@@ -84,22 +72,17 @@ public class ProvidersMethods {
                 System.out.println("Vendedor no encontrado");
                 return 0.0;
             }
-        } finally {
-            em.close();
-        }
     }
 
 
     public void showInvoice(Long invoiceId, EntityManager em) {
-        em.getTransaction().begin();
-        try{
             Invoice invoice = em.find(Invoice.class, invoiceId);
-            if(invoice != null) {
+            if (invoice != null) {
                 System.out.println("Factura: " + invoice.getId());
                 System.out.println("Cliente: " + invoice.getClient().getNames() + "\t\tFecha de compra: " + invoice.getInvoiceDate());
                 System.out.println("\nId Item\t\tNombre Item\t\tCantidad\tValor unitario venta\tValor");
                 double totalInvoice = 0.0;
-                for(Detail detail : invoice.getDeatilsList()){
+                for (Detail detail : invoice.getDeatilsList()) {
                     System.out.println(detail.getId() + "\t\t\t" + detail.getProduct().getName() + "\t\t\t" + detail.getAmount() +
                             "\t\t" + detail.getSellingPrice() + "\t\t\t\t" + detail.getSellingPrice() * detail.getAmount());
                     totalInvoice += detail.getSellingPrice() * detail.getAmount();
@@ -108,10 +91,6 @@ public class ProvidersMethods {
             } else {
                 System.out.println("La factura con el ID especificado no existe");
             }
-        } finally {
-            em.close();
-        }
-
     }
 
 

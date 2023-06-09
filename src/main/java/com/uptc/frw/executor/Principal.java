@@ -22,7 +22,6 @@ public class Principal {
         providersMethods.insertData(em);
         System.out.println("Data saved succesful!");
 
-
         // Metodo para obtener las facturas de un cliente
 
         List<Invoice> invoices = providersMethods.getInvoicesById(5l, em);
@@ -63,5 +62,6 @@ public class Principal {
         //Metodo para mostrar la factura
         providersMethods.showInvoice(2l, em);
 
+        em.close();
     }
 }
